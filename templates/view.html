@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee List</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <style>
+    body {
+      background-color: #CBCBCB;
+    }
+
+    .table-responsive {
+      margin-top: 4rem;
+    }
+
+    .table-light th {
+      background-color: #f8f9fa;
+    }
+
+    .custom-checkbox input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .custom-checkbox label:before {
+      content: "";
+      margin-right: 10px;
+      display: inline-block;
+      vertical-align: text-top;
+      width: 16px;
+      height: 16px;
+      background: white;
+      border: 1px solid #bbb;
+    }
+
+    .custom-checkbox input[type="checkbox"]:checked+label:before {
+      background: #007bff;
+      border: 1px solid #007bff;
+    }
+
+    .custom-checkbox input[type="checkbox"]:checked+label:after {
+      content: "";
+      position: absolute;
+      left: 6px;
+      top: 3px;
+      width: 6px;
+      height: 11px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+
+    .btn-text {
+      background-color: transparent;
+      border: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .text-theme {
+      color: #007bff;
+    }
+
+    .text-danger {
+      color: #dc3545;
+    }
+
+    .text-theme:hover {
+      text-decoration: none;
+    }
+
+    .text-danger:hover {
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2 class="text-center my-4" style="font-size: 40px;">List of Employees</h2>
+    <div class="table-responsive">
+      <table class="table table-hover mt-4 table-light">
+        <thead>
+          <tr>
+            <th>
+              <span class="custom-checkbox">
+                <input type="checkbox" id="selectAll">
+                <label for="selectAll"></label>
+              </span>
+            </th>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Middle Name</th>
+            <th>Last Name</th>
+            <th>Email Address</th>
+            <th>Phone Number</th>
+            <th>Position</th>
+            <th>State</th>
+            <th>Country</th>
+            <th class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="employeeTable">
+          {% for employee in employees %}
+          <tr>
+            <th>
+              <span class="custom-checkbox">
+                <input type="checkbox" id="selectEmployee_{{employee.id}}" data-employeeid="{{employee.id}}"
+                  data-ename="{{employee.first_name}}">
+                <label for="selectEmployee_{{employee.id}}"></label>
+              </span>
+            </th>
+            <td>{{employee.id}}</td>
+            <td>{{employee.first_name}}</td>
+            <td>{{employee.middle_name}}</td>
+            <td>{{employee.last_name}}</td>
+            <td>{{employee.email}}</td>
+            <td>{{employee.phone_number}}</td>
+            <td>{{employee.position}}</td>
+            <td>{{employee.state}}</td>
+            <td>{{employee.country}}</td>
+            <td>
+              <a href="{% url 'edit_employees' employee.id %}" class="btn btn-text text-theme"><i
+                  class="fas fa-pencil-alt"></i></a>
+                 &nbsp;&nbsp;&nbsp;&nbsp;
+              <a class="btn btn-text text-danger deleteEmployee" 
+                href="delete_employee/{{employee.id}}"><i class="fa fa-trash"></i></a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRUD Page</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <style>
+    body {
+      background-color: #CBCBCB;
+    }
+  
+    .card {
+      margin-bottom: 50px;
+      border-radius: 10px;
+      height: 200px;
+      box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+  
+    .card-title {
+        margin-bottom: 10px;
+        font-size: 30px;
+      }
+  </style>
+  
+</head>
+
+<body>
+  <div class="container">
+    <h2 class="text-center my-4" style="font-size: 50px;">CRUD Page</h2>
+
+    <hr>
+    <div class="row justify-content-center">
+      <div class="col-lg-6 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-user-plus"></i> Add Employee</h5>
+            <hr>
+            <p class="card-text">Add a new employee to the system.</p>
+            <a href="{% url 'add_employee' %}" class="btn btn-primary">Add</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row justify-content-center">
+      <div class="col-lg-6 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-users"></i> View Employees</h5>
+            <hr>
+            <p class="card-text">View all employees in the system.</p>
+            <a href="{% url 'view_employees' %}" class="btn btn-primary">View</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
